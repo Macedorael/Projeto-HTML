@@ -1,0 +1,50 @@
+{% load bootstrap4 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Produto</title>
+    <link rel="stylesheet" href="{% static 'css\style.css' %}">
+
+    {% bootstrap_css%}
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Produtos</h1><br>
+        <form method="POST" action="{% url 'editar_produto' %}">
+            {% csrf_token %}
+            <input type="text" name="nome" placeholder="Digite o nome do produto">
+            <input type="submit" name="search-submit" value="Pesquisar" class="btn btn-outline-dark">
+            <button type="button" class="btn btn-outline-dark "><a href="{% url 'index' %}">Voltar</a></button>
+          </form>
+          
+        {% if produtos %}
+            <h1>Resultados da Pesquisa</h1>
+            <ul>
+                {% for produto in produtos %}
+                    <li>
+                    <p>ID: {{ produto.id }}</p>
+                    <p>Nome: {{ produto.nome }}</p>
+                    <p>Preço: {{ produto.preco }}</p>
+                    <p>Estoque: {{ produto.estoque }}</p>
+                    <form method="POST" action="{% url 'editar_produto' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="id" value="{{ produto.id }}">
+                        <input type="text" name="novo_nome" placeholder="Novo nome">
+                        <input type="number" name="novo_preco" placeholder="Novo preço">
+                        <input type="number" name="novo_estoque" placeholder="Novo estoque">
+                        <button type="submit" name="edit-submit" class="btn"><img src="{% static 'images/check.png' %}" alt=""></button>
+                    </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}          
+    </div>
+    
+
+{% bootstrap_javascript jquery='full' %}
+</body>
+</html>

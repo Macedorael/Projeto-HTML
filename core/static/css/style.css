@@ -1,0 +1,32 @@
+a{
+    color: black !important;
+    text-decoration: none !important;
+}
+a:hover{
+    
+    color: white !important;
+}
+
+body{
+    background-color: rgba(162, 119, 163, 0.267 ) !important;
+}
+
+.link{
+    text-decoration: none !important;
+    color: black !important;
+}
+
+.btn-outline-dark:hover{
+    background-color: rgba(2, 1, 2, 0.267) !important;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.btn-outline-dark{
+    background-color: rgba(162, 119, 163, 0.096) !important ;
+    color: black !important;
+}
+
+.add{
+   padding-left :25px !important;
+}
